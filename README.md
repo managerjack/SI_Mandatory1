@@ -1,3 +1,29 @@
+
+**To get up and running make sure that you have the following installed:**
+
+- Python 3.7 or above
+	- sqlite3
+	- requests
+	- json
+	- pandas
+
+To install these packages run this command: sudo pip install sqlite3 requests json pandas
+
+- NodeJS 14.5 or above and NPM
+	- express
+	- light-esb-node
+	- sqlite3
+	- readline-sync
+	- fast-xml-parser
+
+To install these packages run this command: npm install express light-esb-node sqlite3 readline-sync fast-xml-parser
+
+You can also try to run: npm install
+
+The npm install command will simply install the packages that it finds inside the package.json file.
+
+---
+
 **Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
 When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
