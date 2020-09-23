@@ -6,21 +6,20 @@
 	- requests
 	- json
 	- pandas
+	- xml-python
+	- msgpack
 
-To install these packages run this command: sudo pip install sqlite3 requests json pandas
+To install these packages run this command: sudo pip install sqlite3 requests json pandas xml-python msgpack
 
 - NodeJS 14.5 or above and NPM
 	- express
-	- light-esb-node
+	- axios
+	- express-xml-bodyparser
 	- sqlite3
 	- readline-sync
-	- fast-xml-parser
+	- request
 
-To install these packages run this command: npm install express light-esb-node sqlite3 readline-sync fast-xml-parser
-
-You can also try to run: npm install
-
-The npm install command will simply install the packages that it finds inside the package.json file.
+To install these packages run this command: npm install express axios express-xml-bodyparser sqlite3 readline-sync request
 
 ---
 
