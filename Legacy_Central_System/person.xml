@@ -1,0 +1,19 @@
+</Person>
+<?xml version="1.0" ?>
+<Person>
+	<FirstName ="Jack"/>
+	<LastName ="Zhong"/>
+	<CprNumber ="070319978983"/>
+</Person>
+<?xml version="1.0" ?>
+<Person>
+	<FirstName ="Carsten"/>
+	<LastName ="Larsen"/>
+	<CprNumber ="030319902601"/>
+</Person>
+<?xml version="1.0" ?>
+<Person>
+	<FirstName ="Plant"/>
+	<LastName ="Basil"/>
+	<CprNumber ="040419808236"/>
+</Person>
