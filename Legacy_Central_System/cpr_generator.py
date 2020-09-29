@@ -1,12 +1,18 @@
 import xml.etree.ElementTree as et
-from xml.dom import minidom
+import msgpack
 import os 
 import random
+
+####################################
+# Save data in msgpack files
+
+def save_msgpack(person):
+    pass
 
 with open ("../Main_System/people.csv") as csvfile:
     reader = csvfile.readlines()[1:]
     for person in reader:  
-        
+
         cpr = person
         cpr = cpr.replace('-', '')
         cpr = cpr.split(',')[3]
@@ -15,44 +21,23 @@ with open ("../Main_System/people.csv") as csvfile:
             n = random.randint(0, 9)
             cpr = cpr + str(n)
         
-        #print(cpr)
+        per_obj = {
+            "FirstName": person.split(',')[0],
+            "LastName": person.split(',')[1],
+            "CprNumber": person.split(',')[3],
+            "Email": person.split(',')[2]
+        }
 
         root =  et.Element("Person")
-        et.SubElement(root, "FirstName").text = person.split(',')[0]
-        et.SubElement(root, "LastName").text = person.split(',')[1]
-        et.SubElement(root, "CprNumber").text = cpr.split(',')[0]
-        et.SubElement(root, "Email").text = person.split(',')[2]
+        et.SubElement(root, "FirstName").text = per_obj['FirstName']
+        et.SubElement(root, "LastName").text = per_obj['LastName']
+        et.SubElement(root, "CprNumber").text = per_obj['CprNumber']
+        et.SubElement(root, "Email").text = per_obj['Email']
         
         tree = et.ElementTree(root)
         tree.write('person.xml') #, encoding='UTF-8', xml_declaration=True)
-        #root = minidom.Document()
 
-        #xml = root.createElement('Person')
-        #root.appendChild(xml)
-
-        #productChild = root.createElement('FirstName')
-        #productChild.setAttribute('', person.split(',')[0])
-                
-        #productChild2 = root.createElement('LastName')
-        #productChild2.setAttribute('', person.split(',')[1])
-
-        #productChild3 = root.createElement('CprNumber')
-        #productChild3.setAttribute('', cpr.split(',')[0])
-
-        #productChild4 = root.createElement('Email')
-        #productChild4.
-
-        #xml.appendChild(productChild)
-        #xml.appendChild(productChild2)
-        #xml.appendChild(productChild3)
-        #xml.appendChild(productChild4)
-
-        #xml_str = root.toprettyxml(indent="\t")
-
-        #person_file_xml = "person.xml"
-
-        #with open(person_file_xml, "a", newline='') as f:
-        #    f.writelines(xml_str)
+        save_msgpack(per_obj)
         
 
 
