@@ -1,0 +1,14 @@
+{
+  "name": "nemid_usergenerator",
+  "version": "1.0.0",
+  "description": "Will generate a user when requested",
+  "main": "user_generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arvid Larsen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
