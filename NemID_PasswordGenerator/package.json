@@ -1,8 +1,8 @@
 {
-  "name": "nemid_usergenerator",
+  "name": "nemid_passwordgenerator",
   "version": "1.0.0",
-  "description": "Will generate a user when requested",
-  "main": "user_generator.js",
+  "description": "For generating passwords",
+  "main": "password_generator.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

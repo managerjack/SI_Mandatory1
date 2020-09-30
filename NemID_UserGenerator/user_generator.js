@@ -1,4 +1,4 @@
-const port = 8088
+const port = 8088;
 const express = require('express');
 
 var app = express();
