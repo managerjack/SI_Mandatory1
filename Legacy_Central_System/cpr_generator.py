@@ -2,6 +2,7 @@ import xml.etree.ElementTree as et
 import msgpack
 import os 
 import random
+from nemId_generator import NemIdGenerator as ng
 
 ####################################
 # Save data in msgpack files
@@ -12,9 +13,9 @@ def save_msgpack(person):
             pack = msgpack.packb(person)
             msgwrite.write(pack)
             msgwrite.close()
-           
 
 with open ("../Main_System/people.csv") as csvfile:
+    nem_request = ng()
     reader = csvfile.readlines()[1:]
     for person in reader:  
         
@@ -43,16 +44,10 @@ with open ("../Main_System/people.csv") as csvfile:
         et.SubElement(root, "Email").text = per_obj['Email']
 
         xml_string = et.tostring(root).decode()
-
-        with open('person.xml', 'a') as xml_file:
-            xml_file.write(xml_string)
-            xml_file.close()
-
-        #tree = et.ElementTree(root)
-        #tree.write('person.xml') #, encoding='UTF-8', xml_declaration=True)
+        print(xml_string)
 
         save_msgpack(per_obj)
-        
+        nem_request.send_request(xml_string)      
 
 
 

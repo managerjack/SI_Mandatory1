@@ -1,12 +1,14 @@
 import requests
 import urllib.request
 
-xml_file = """person.xml"""
+class NemIdGenerator:
+    ADDRESS = "http://localhost"
+    PORT = 8080
+    ENDPOINT = "/nemId"
 
-header = {'Content-Type': 'application/xml'}
+    def send_request(self, xml_payload):
+        header = {'Content-Type': 'application/xml'}
+        res = requests.post(f"{self.ADDRESS}:{self.PORT}{self.ENDPOINT}", data = xml_payload, headers = header)
 
-with open(xml_file) as xml:
-    r = requests.post("http://localhost:8080/nemId", data = xml, headers = header)
-    
-print(r.content)
-print(r.status_code)
+        print(f"\rSTATUS CODE: {res.status_code}\r")
+        print(res.content)
