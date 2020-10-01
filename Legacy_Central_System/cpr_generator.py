@@ -17,8 +17,8 @@ def save_msgpack(person):
 with open ("../Main_System/people.csv") as csvfile:
     nem_request = ng()
     reader = csvfile.readlines()[1:]
-    for person in reader:  
-        
+
+    for person in reader:      
         cpr = person
         cpr = cpr.replace('-', '')
         cpr = cpr.split(',')[3]
@@ -44,7 +44,6 @@ with open ("../Main_System/people.csv") as csvfile:
         et.SubElement(root, "Email").text = per_obj['Email']
 
         xml_string = et.tostring(root).decode()
-        print(xml_string)
 
         save_msgpack(per_obj)
         nem_request.send_request(xml_string)      
