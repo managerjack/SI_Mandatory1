@@ -7,9 +7,9 @@
 *The csv file will be read in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
 
 **- For each person that is found in the file it will:**<br/><br/>
->>**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
+>**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
 
->>*The cpr-generation happens in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
+>*The cpr-generation happens in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
 	  
 >>**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
 
