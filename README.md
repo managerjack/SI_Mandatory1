@@ -7,23 +7,23 @@
 *The csv file will be read in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
 
 **- For each person that is found in the file it will:**<br/><br/>
->>**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
+>**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
 
-	*The cpr-generation happens in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
+>*The cpr-generation happens in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
 	  
-	**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
+>**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
 
-	*The function for creating the xml body is found in "cpr_generator.py" at the method "def create_xml(person)"*<br/><br/>
+>*The function for creating the xml body is found in "cpr_generator.py" at the method "def create_xml(person)"*<br/><br/>
 
-	**- Send a POST request to http://localhost:8080/nemIDwith the XML as a body**<br/><br/>
+>**- Send a POST request to http://localhost:8080/nemIDwith the XML as a body**<br/><br/>
 
-	*The "nemId_generator.py" file will be responsible for that*<br/><br/>
+>*The "nemId_generator.py" file will be responsible for that*<br/><br/>
 
-	**- The NemID system will return a JSON body:**<br/><br/>
+>**- The NemID system will return a JSON body:**<br/><br/>
 	{<br/>
 		"nemID": "some 9 digit nemID"<br/>
 	}<br/><br/>
-	**- An msgpack file will be created with the name [CPR].msgpack which will contain f_name, l_name, birth_date<br/>[DD-MM-YYYY], email, country, phone, address, CPR and NemID number. Isuggest you makea JSON<br/>object and then serialize it.**
+>**- An msgpack file will be created with the name [CPR].msgpack which will contain f_name, l_name, birth_date<br/>[DD-MM-YYYY], email, country, phone, address, CPR and NemID number. Isuggest you makea JSON<br/>object and then serialize it.**
 
 ---
 
