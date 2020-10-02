@@ -1,3 +1,8 @@
+/**
+ * Responsible for generating a username for a new NemID user.
+ * 
+ * Author: Arvid Larsen
+ */
 const port = 8088;
 const express = require('express');
 

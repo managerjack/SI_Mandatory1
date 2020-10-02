@@ -1,3 +1,8 @@
+/**
+ * Responsible for generating a random password for a new NemID user.
+ * 
+ * Author: Arvid Larsen
+ */
 const port = 8089;
 const express = require('express');
 

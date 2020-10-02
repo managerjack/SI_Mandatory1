@@ -1,3 +1,10 @@
+''' Module is responsible for sending a POST message with an xml body.
+
+Classes:
+    NemIdGenerator
+
+Author: Jack Zhong
+'''
 import requests
 import urllib.request
 
@@ -10,6 +17,10 @@ class NemIdGenerator:
         __PORT (int): Default server port.
         __ENDPOINT (str): Default endpoint.
         __default_address (str): Default address, port and endpoint.
+    
+    Methods:
+        send_xml(xml_payload, address=None):
+            Send xml POST message to a server.
     '''
 
     __ADDRESS = "http://localhost"
@@ -41,6 +52,4 @@ class NemIdGenerator:
         return True if res.status_code == 200 else False
 
 if __name__ == "__main__":
-    n = NemIdGenerator()
-    print(n.__doc__)
-    print(n.send_xml.__doc__)
+    print(NemIdGenerator.__doc__)

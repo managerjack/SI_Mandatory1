@@ -1,3 +1,7 @@
+''' Module is responsible for reading a .csv file repackaging it to .xml and save it as a .msgpack.
+
+Author: Jack Zhong
+'''
 import xml.etree.ElementTree as et
 import msgpack
 import os 

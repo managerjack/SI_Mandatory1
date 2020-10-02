@@ -1,3 +1,8 @@
+/**
+ * Responsible for authenticating a user.
+ * 
+ * Author: Arvid Larsen
+ */
 const port = 8090;
 const express = require('express');
 const sqlite3 = require('sqlite3');
@@ -14,6 +19,7 @@ app.post('/nemid_auth', (req, res) =>{
 
     let queryFindUser = "SELECT * FROM user WHERE NemID = ? AND Password = ?"
 
+    // Retreive user from database
     db.get(queryFindUser, [nemId, password], (err, row) => {
         if (row){
             rand_code = "";
