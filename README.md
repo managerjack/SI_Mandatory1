@@ -1,38 +1,46 @@
 
 ## Tasks
 
-**2. Legacy CentralSystem(To be developed):**<br/><br/>
+**2. Legacy Central System(To be developed):**<br/><br/>
 **- The system must read the people.csv file**<br/><br/>
 
-*The csv file will be read in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
+*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_nemIds():"-method*<br/><br/>
 
 **- For each person that is found in the file it will:**<br/><br/>
 >**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
 
->*The cpr-generation happens in "cpr_generator.py" through the "def create_nemIds():"-method*<br/><br/>
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_nemIds():"-method*<br/><br/>
 	  
->>**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
+>**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
 
->>*The function for creating the xml body is found in "cpr_generator.py" at the method "def create_xml(person)"*<br/><br/>
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_xml(person)"*<br/><br/>
 
->>**- Send a POST request to http://localhost:8080/nemIDwith the XML as a body**<br/><br/>
+>**- Send a POST request to http://localhost:8080/nemIDwith the XML as a body**<br/><br/>
 
->>*The "nemId_generator.py" file will be responsible for that*<br/><br/>
+>*"Legacy_Central_System" - folder --> "nemId_generator.py"*<br/><br/>
 
->>**- The NemID system will return a JSON body:**<br/><br/>
+>**- The NemID system will return a JSON body:**<br/><br/>
 	{<br/>
 		"nemID": "some 9 digit nemID"<br/>
 	}<br/><br/>
->>**- An msgpack file will be created with the name [CPR].msgpack which will contain f_name, l_name, birth_date<br/>[DD-MM-YYYY], email, country, phone, address, CPR and NemID number. Isuggest you makea JSON<br/>object and then serialize it.**
+
+>*"Proof" - folder --> "Auth_User_200.PNG"*<br/><br/>
+
+>**- An msgpack file will be created with the name [CPR].msgpack which will contain f_name, l_name, birth_date<br/>[DD-MM-YYYY], email, country, phone, address, CPR and NemID number. Isuggest you makea JSON<br/>object and then serialize it.**<br/><br/>
+
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def save_msgpack(person):"-method*
 
 ---
 
 **4.NemID User Generator:**<br/><br/>
-**- Will receive a POST request to http://localhost:8088/generate-nemIDwith body:**<br/>
+**- Will receive a POST request to http://localhost:8088/generate-nemIDwith body:**<br/><br/>
 {<br/>
 	"cpr": "some 10 digit CPR",<br/>
 	"email": "some@email.com"<br/>
-}<br/>
+}<br/><br/>
+
+
+
 **- Will return a JSON response (status 201):**<br/>
 	"nemID": "random_5_digit_number-Last_4_digits_of_CPR"
 
