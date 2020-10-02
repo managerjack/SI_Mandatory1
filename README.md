@@ -1,70 +1,71 @@
 
-**To get up and running make sure that you have the following installed:**
+## Tasks
 
-- Python 3.7 or above
-	- sqlite3
-	- requests
-	- json
-	- pandas
-	- xml-python
-	- msgpack
+**2. Legacy Central System(To be developed):**<br/><br/>
+**- The system must read the people.csv file**<br/><br/>
 
-To install these packages run this command: sudo pip install sqlite3 requests json pandas xml-python msgpack
+*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_nemIds():"-method*<br/><br/>
 
-- NodeJS 14.5 or above and NPM
-	- express
-	- axios
-	- express-xml-bodyparser
-	- sqlite3
-	- readline-sync
-	- request
+**- For each person that is found in the file it will:**<br/><br/>
+>**- Generate a CPR similarly to how a normal CPR looks:ddMMyyy-[random-4-digits]**<br/><br/>
 
-To install these packages run this command: npm install express axios express-xml-bodyparser sqlite3 readline-sync request
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_nemIds():"-method*<br/><br/>
+	  
+>**- Build an xml body that containsthe first name, last name and CPR number**<br/><br/>
 
----
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def create_xml(person)"*<br/><br/>
 
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+>**- Send a POST request to http://localhost:8080/nemIDwith the XML as a body**<br/><br/>
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+>*"Legacy_Central_System" - folder --> "nemId_generator.py"*<br/><br/>
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+>**- The NemID system will return a JSON body:**<br/><br/>
+	{<br/>
+		"nemID": "some 9 digit nemID"<br/>
+	}<br/><br/>
 
----
+>*"Proof" - folder --> "Auth_User_200.PNG"*<br/><br/>
 
-## Edit a file
+>**- An msgpack file will be created with the name [CPR].msgpack which will contain f_name, l_name, birth_date<br/>[DD-MM-YYYY], email, country, phone, address, CPR and NemID number. Isuggest you makea JSON<br/>object and then serialize it.**<br/><br/>
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+>*"Legacy_Central_System" - folder --> "cpr_generator.py" --> "def save_msgpack(person):"-method*
 
 ---
 
-## Create a file
+**4.NemID User Generator:**<br/><br/>
+**- Will receive a POST request to http://localhost:8088/generate-nemIDwith body:**<br/><br/>
+{<br/>
+	"cpr": "some 10 digit CPR",<br/>
+	"email": "some@email.com"<br/>
+}<br/><br/>
 
-Next, you’ll add a new file to this repository.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+**- Will return a JSON response (status 201):**<br/>
+	"nemID": "random_5_digit_number-Last_4_digits_of_CPR"
 
 ---
 
-## Clone a repository
+**5.NemID Password Generator:**<br/><br/>
+**- Will receive a POST request to http://localhost:8089/generate-password-nemIDwith body:**<br/>
+{<br/>
+	"nemID": "random_5_digit_number-Last_4_digits_of_CPR",<br/>
+	"cpr": "cpr_number"<br/>
+}<br/>
+**- Will send a JSON response (status 200):**<br/>
+{<br/>
+	"nemIdPassword": "first 2 digits of nemId and last 2 digits of the cpr"<br/>
+}
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+---
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
-
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+**6.NemID Code Generator:**<br/><br/>
+**- Will receive a POST request at http://localhost:8090/nemid-authwith JSON body:**<br/>
+{<br/>
+	"nemIdCode": "code of 4 digits",<br/>
+	"nemId": "generated 9 digit nemID"<br/>
+}<br/>
+**- Check against the data from the database. If it matches this will return a JSON bodywith status code 200.<br/> Otherwise it will return a 403(forbidden):**<br/>
+{<br/>
+	"generatedCode": "random 6 digit code"<br/>
+}
